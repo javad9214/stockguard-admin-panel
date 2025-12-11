@@ -1,5 +1,34 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Admin panel for StockGuard mobile apps. Use it to manage app versions (Android/iOS) through the StockGuard server.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Prerequisites
+- Node.js 18+
+- Access to a running StockGuard server (see https://github.com/javad9214/StockGuard_ServerSide)
+
+## Setup
+```bash
+npm install
+```
+
+Create a `.env` file (or `.env.local`) with your API base:
+```bash
+VITE_API_BASE_URL=http://localhost:8080/api
+```
+Update the URL to point at your deployed server.
+
+## Develop
+```bash
+npm run dev
+```
+
+Login uses `/auth/login` (adjust if your server differs) and stores the returned token in `localStorage` under `admin_token`. Protected routes redirect to `/login` when unauthenticated.
+
+## Build
+```bash
+npm run build
+```
+
+## Notes
+- Auth header uses `admin_token` from `localStorage` if you need to protect the admin APIs.
+- Version CRUD calls the `/version/admin/*` endpoints provided by the server project above.
