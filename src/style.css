@@ -41,3 +41,30 @@ a {
   justify-content: space-between;
   margin-bottom: 16px;
 }
+
+.page__header h2 {
+  margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .page {
+    padding: 16px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .page__header {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 12px;
+  }
+  
+  .page__header h2 {
+    font-size: 18px;
+  }
+    }
