@@ -8,10 +8,10 @@ export const useAuthStore = defineStore('auth', () => {
   const token = ref<string | null>(localStorage.getItem(TOKEN_KEY))
   const loading = ref(false)
 
-  async function login(username: string, password: string) {
+  async function login(phoneNumber: string, password: string) {
     loading.value = true
     try {
-      const tok = await AuthService.login({ username, password })
+      const tok = await AuthService.login({ phoneNumber, password })
       token.value = tok
       localStorage.setItem(TOKEN_KEY, tok)
       return tok

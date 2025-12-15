@@ -1,7 +1,7 @@
 import api from './index'
 
 interface LoginPayload {
-  username: string
+  phoneNumber: string
   password: string
 }
 

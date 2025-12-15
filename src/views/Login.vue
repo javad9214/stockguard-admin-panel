@@ -7,19 +7,19 @@ import { useAuthStore } from '@/store/auth'
 const router = useRouter()
 const auth = useAuthStore()
 const form = reactive({
-  username: '',
+  phoneNumber: '',
   password: '',
 })
 const submitting = ref(false)
 
 async function submit() {
-  if (!form.username || !form.password) {
-    ElMessage.warning('Please enter username and password')
+  if (!form.phoneNumber || !form.password) {
+    ElMessage.warning('Please enter phoneNumber and password')
     return
   }
   submitting.value = true
   try {
-    await auth.login(form.username, form.password)
+    await auth.login(form.phoneNumber, form.password)
     ElMessage.success('Logged in')
     router.replace({ name: 'dashboard' })
   } catch (err) {
@@ -36,10 +36,10 @@ async function submit() {
     <div class="login__card">
       <h2>Admin Login</h2>
       <el-form label-position="top" @submit.prevent>
-        <el-form-item label="Username">
+        <el-form-item label="phoneNumber">
           <el-input
-            v-model="form.username"
-            autocomplete="username"
+            v-model="form.phoneNumber"
+            autocomplete="phoneNumber"
             placeholder="admin"
           />
         </el-form-item>
