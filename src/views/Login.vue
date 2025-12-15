@@ -22,9 +22,9 @@ async function submit() {
     await auth.login(form.phoneNumber, form.password)
     ElMessage.success('Logged in')
     router.replace({ name: 'dashboard' })
-  } catch (err) {
+  } catch (err: any) {
     console.error(err)
-    ElMessage.error('Login failed. Check credentials or endpoint.')
+    ElMessage.error(err.message || 'Login failed')
   } finally {
     submitting.value = false
   }
@@ -92,4 +92,3 @@ async function submit() {
   color: #111827;
 }
 </style>
-
