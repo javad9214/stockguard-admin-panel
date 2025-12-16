@@ -1,4 +1,3 @@
-// src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import Versions from '../views/Versions.vue'
@@ -8,6 +7,7 @@ import { useAuthStore } from '@/store/auth'
 const routes = [
   { path: '/login', name: 'login', component: Login },
   { path: '/', name: 'dashboard', component: Dashboard, meta: { requiresAuth: true } },
+  { path: '/users', name: 'users', component: () => import('../views/Users.vue'), meta: { requiresAuth: true } },
   { path: '/versions', name: 'versions', component: Versions, meta: { requiresAuth: true } },
 ]
 
