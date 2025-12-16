@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { UserService } from '@/api/userService'
 import type { AdminUserDTO, UserStatistics } from '@/api/models/user'
@@ -21,8 +21,6 @@ const dialogVisible = ref(false)
 const resetPwdVisible = ref(false)
 const editData = ref<AdminUserDTO | null>(null)
 const resetUserId = ref<number | null>(null)
-
-const isMobile = computed(() => window.innerWidth < 768)
 
 async function loadUsers() {
   loading.value = true
@@ -64,16 +62,6 @@ function openEdit(user: AdminUserDTO) {
 function openResetPassword(user: AdminUserDTO) {
   resetUserId.value = user.id
   resetPwdVisible.value = true
-}
-
-async function toggleStatus(user: AdminUserDTO) {
-  try {
-    await UserService.toggleStatus(user.id)
-    ElMessage.success('Status updated')
-    loadUsers()
-  } catch (err: any) {
-    ElMessage.error(err.message || 'Failed')
-  }
 }
 
 async function unlockUser(user: AdminUserDTO) {
