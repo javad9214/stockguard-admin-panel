@@ -4,7 +4,7 @@ import axios from 'axios'
 // Prefer environment override so the panel can point to any server without code changes.
 const baseURL =
   import.meta.env.VITE_API_BASE_URL?.toString().trim() ||
-  'https://mjavadserver.ir/api'
+  'http://188.75.89.14/api'
 
 const api = axios.create({
   baseURL,
